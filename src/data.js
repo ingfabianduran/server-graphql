@@ -1,0 +1,5 @@
+export const soportes = [
+    {"_id":"5d3afed7283bbd2cd0dc5a92","servicio":"Soporte","tecnico":"Ivan Arturo Ortiz","solicitante":"correo@unbosque.edu.co","perfil":"Administrativo","bloque":"Edificio HUB","salon":"210","labor":"Enceder Equipo de Cómputo","solucionado":"No","fecha":"2019-07-23T13:35:06.983Z","__v":0},
+    {"_id":"5d3afed7283bbd2cd0dc5a93","servicio":"Mantenimiento","tecnico":"Sebastian Torres","solicitante":"correo@unbosque.edu.co","perfil":"Docente","bloque":"Edificio HUB","salon":"212","labor":"Soporte No Necesario","solucionado":"No Aplica","fecha":"2019-07-22T18:52:21.830Z","__v":0},
+    {"_id":"5d3afed7283bbd2cd0dc5a94","servicio":"Soporte","tecnico":"Fabian Esteban Duran","solicitante":"correo@unbosque.edu.co","perfil":"Estudiante","bloque":"Edificio HUB","salon":"213","labor":"Enceder Video Beam - TV","solucionado":"No Aplica","fecha":"2019-07-23T16:35:24.377Z","__v":0}
+];
