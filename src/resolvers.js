@@ -1,19 +1,22 @@
 import {soportes} from "./data";
 import moment from "moment-timezone";
+import Soporte from "./models/Soporte";
 
 export const resolvers = {
     Query: {
         hello: (root, {name}) => {
             return `Hola mundo ${name}`;
         },
-        soportes: () => {
-            return soportes;
+        soportes: async () => {
+            return await Soporte.find();
         }
     },
     Mutation: {
-        createSoporte: (_, {input}) => {
-            input._id = Math.random().toString(36).replace("0.", "");
+        createSoporte: async (_, {input}) => {
             input.fecha = moment().tz("America/Bogota").format("YYYY/MM/DD");
+            const soporte = new Soporte(input);
+            await soporte.save();
+            return soporte;
         }
     }
 }; 
