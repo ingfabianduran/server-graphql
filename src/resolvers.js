@@ -1,4 +1,4 @@
-import {soportes} from "./data";
+import data from "./data";
 import moment from "moment-timezone";
 import Soporte from "./models/Soporte";
 
@@ -9,6 +9,13 @@ export const resolvers = {
         },
         soportes: async () => {
             return await Soporte.find();
+        },
+        dataForm: () => {
+            return data.dataForm();
+        },
+        labores: (root, {typeSuport}) => {
+            console.log(typeSuport);
+            return data.getLabores(typeSuport);
         }
     },
     Mutation: {

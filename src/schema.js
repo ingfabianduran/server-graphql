@@ -1,17 +1,28 @@
 import {makeExecutableSchema} from "graphql-tools";
 import {resolvers} from "./resolvers";
 
-// hello(name: String!): String: Peticion el cual pide un name obligatorio y retorna un String. 
-// soportes: [Soporte]: Return array object Soporte. 
-
 const typeDefs = `
     type Query {
         hello(name: String!): String
         soportes: [Soporte]
+        dataForm: DataForm
+        labores(typeSuport: String!): Labor
     }
 
     type Mutation {
         createSoporte(input: SoporteInput): Soporte
+    }
+
+    type DataForm {
+        servicios: [String]
+        tecnicos: [String]
+        perfiles: [String]
+        bloques: [String]
+        soluciones: [String]
+    }
+
+    type Labor {
+        labores: [String]
     }
     
     type Soporte {
