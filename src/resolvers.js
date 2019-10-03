@@ -14,16 +14,30 @@ export const resolvers = {
             return data.dataForm();
         },
         labores: (root, {typeSuport}) => {
-            console.log(typeSuport);
             return data.getLabores(typeSuport);
         }
     },
     Mutation: {
         createSoporte: async (_, {input}) => {
-            input.fecha = moment().tz("America/Bogota").format("YYYY/MM/DD");
-            const soporte = new Soporte(input);
-            await soporte.save();
-            return soporte;
+            try {
+                input.fecha = moment().tz("America/Bogota").format("YYYY/MM/DD");
+                const soporte = new Soporte(input);
+                await soporte.save();
+                
+                const res = {
+                    state: true,
+                    message: "Soporte Registrado correctamente"
+                };
+
+                return res;
+            } catch (error) {
+                const res = {
+                    state: false,
+                    message: `Error: ${error}`
+                };
+
+                return res;
+            }
         }
     }
 }; 

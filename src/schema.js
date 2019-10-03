@@ -10,7 +10,7 @@ const typeDefs = `
     }
 
     type Mutation {
-        createSoporte(input: SoporteInput): Soporte
+        createSoporte(input: SoporteInput): Status
     }
 
     type DataForm {
@@ -36,6 +36,11 @@ const typeDefs = `
         labor: String
         solucionado: String
         fecha: String
+    }
+
+    type Status {
+        state: Boolean
+        message: String
     }
 
     input SoporteInput {
