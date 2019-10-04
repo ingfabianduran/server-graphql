@@ -1,6 +1,7 @@
 import data from "./data";
 import moment from "moment-timezone";
 import Soporte from "./models/Soporte";
+import validate from "./validations/soporte";
 
 export const resolvers = {
     Query: {
@@ -21,8 +22,18 @@ export const resolvers = {
         createSoporte: async (_, {input}) => {
             try {
                 input.fecha = moment().tz("America/Bogota").format("YYYY/MM/DD");
-                const soporte = new Soporte(input);
-                await soporte.save();
+                
+
+                const values = {
+                    servicio: "Soporte"
+                };
+
+
+                console.log(validate.validateFormSoporte(values));
+                
+
+                // const soporte = new Soporte(input);
+                // await soporte.save();
                 
                 const res = {
                     state: true,
