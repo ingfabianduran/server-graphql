@@ -1,19 +1,18 @@
 import Joi from "@hapi/joi";
+import data from "../data";
 
 module.exports = {
     validateFormSoporte: (dataForm) => {
 
-        
-
         const schema = Joi.object({
-            servicio: Joi.string().valid("Soporte", "Mantenimiento", "Audiovisuales", "Desarrollo Fisico", "Redes").required(),
-            tecnico: Joi.string().valid("John Jairo Agudelo", "Julian Camilo Lopez", "Orlando Garcia Zapata", "Fabian Esteban Duran", "Ivan Arturo Ortiz", "David Stiven Martinez", "Sebastian Torres").required(),
-            solicitante: Joi.string().min(25).max(60).required(),
-            perfil: Joi.string().valid("Administrativo", "Docente", "Estudiante").required(),
-            bloque: Joi.string().valid("Bloque A", "Bloque B", "Bloque C", "Bloque E", "Bloque F", "Bloque G", "Bloque I", "Bloque J", "Bloque K", "Bloque L", "Bloque M", "Bloque N", "Bloque O", "Edificio HUB", "Centro de Lenguas", "Casa Fotografia").required(),
+            servicio: Joi.string().valid(...data.dataForm().servicios).required(),
+            tecnico: Joi.string().valid(...data.dataForm().tecnicos).required(),
+            solicitante: Joi.string().min(10).max(60).required(),
+            perfil: Joi.string().valid(...data.dataForm().perfiles).required(),
+            bloque: Joi.string().valid(...data.dataForm().bloques).required(),
             salon: Joi.string().min(3).required(),
-            labor: Joi.string().valid(labores).required(),
-            solucionado: Joi.string().valid("Si", "No").required(),
+            labor: Joi.string().valid(...data.getLabores(dataForm.servicio).labores).required(),
+            solucionado: Joi.string().valid(...data.dataForm().soluciones).required(),
             fecha: Joi.date().required()
         });
 

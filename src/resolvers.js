@@ -22,32 +22,28 @@ export const resolvers = {
         createSoporte: async (_, {input}) => {
             try {
                 input.fecha = moment().tz("America/Bogota").format("YYYY/MM/DD");
+                var res = {};
+
+                if (validate.validateFormSoporte(input) === undefined) {
+                    const soporte = new Soporte(input);
+                    await soporte.save();
                 
-
-                const values = {
-                    servicio: "Soporte"
-                };
-
-
-                console.log(validate.validateFormSoporte(values));
-                
-
-                // const soporte = new Soporte(input);
-                // await soporte.save();
-                
-                const res = {
-                    state: true,
-                    message: "Soporte Registrado correctamente"
-                };
-
-                return res;
+                    return res = {
+                        state: true,
+                        message: "Soporte Registrado correctamente"
+                    };
+                }
+                else {
+                    return res = {
+                        state: false,
+                        message: "Algo raro paso aquí"
+                    };
+                }
             } catch (error) {
-                const res = {
+                return res = {
                     state: false,
                     message: `Error: ${error}`
                 };
-
-                return res;
             }
         }
     }
