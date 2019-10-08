@@ -5,7 +5,7 @@ import logger from 'morgan';
 import indexRouter from './routes/index';
 import graphqlHttp from 'express-graphql';
 import schema from "./schema";
-import {connect} from "./database";
+import {connect} from "./database/database";
 import cors from "cors";
 
 var app = express();

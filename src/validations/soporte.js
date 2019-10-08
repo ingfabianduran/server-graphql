@@ -1,9 +1,8 @@
 import Joi from "@hapi/joi";
-import data from "../data";
+import data from "../data/data";
 
 module.exports = {
     validateFormSoporte: (dataForm) => {
-
         const schema = Joi.object({
             servicio: Joi.string().valid(...data.dataForm().servicios).required(),
             tecnico: Joi.string().valid(...data.dataForm().tecnicos).required(),
