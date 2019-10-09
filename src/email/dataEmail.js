@@ -16,7 +16,10 @@ module.exports = {
                 from: process.env.EMAIL,
                 to: process.env.IT,
                 subject: "Nuevo Caso",
-                html: "<p>Nuevo caso</p>"
+                template: "main",
+                context: {
+                    title: "Hola Mundo"
+                }
             }
         }
 
