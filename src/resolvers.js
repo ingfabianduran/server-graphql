@@ -22,12 +22,14 @@ export const resolvers = {
     Mutation: {
         createSoporte: async (_, {input}) => {
             input.fecha = moment().tz("America/Bogota").format("YYYY/MM/DD");
-            const resEmail = await email.sendEmail();
-            var res = {};
+            
+            if (input.solucionado === "" || input.solucionado === null || input.solucionado === undefined) input.solucionado = "No Aplica";
 
-            if (resEmail.status) {
-                try {
-                    if (validate.validateFormSoporte(input) === undefined) {
+            if (validate.validateFormSoporte(input) === undefined) {
+                const resEmail = await email.sendEmail();
+                var res = {};
+                if (resEmail.status) {
+                    try {
                         const soporte = new Soporte(input);
                         await soporte.save();
                     
@@ -35,25 +37,24 @@ export const resolvers = {
                             state: true,
                             message: "Soporte Registrado correctamente"
                         };
-                    }
-                    else {
+                        
+                    } catch (error) {
                         return res = {
                             state: false,
-                            message: "Algo raro paso aquí"
+                            message: `Error: ${error}`
                         };
                     }
-                    
-                } catch (error) {
+                }
+                else {
                     return res = {
                         state: false,
-                        message: `Error: ${error}`
+                        message: resEmail.message
                     };
                 }
-            }
-            else {
+            } else {
                 return res = {
                     state: false,
-                    message: resEmail.message
+                    message: "Algo raro paso aquí"
                 };
             }
         }

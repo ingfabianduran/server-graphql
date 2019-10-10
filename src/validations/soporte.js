@@ -11,7 +11,7 @@ module.exports = {
             bloque: Joi.string().valid(...data.dataForm().bloques).required(),
             salon: Joi.string().min(3).required(),
             labor: Joi.string().valid(...data.getLabores(dataForm.servicio).labores).required(),
-            solucionado: Joi.string().valid(...data.dataForm().soluciones).required(),
+            solucionado: Joi.string().valid("Si", "No", "No Aplica").required(),
             fecha: Joi.date().required()
         });
 

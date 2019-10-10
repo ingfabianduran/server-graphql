@@ -51,7 +51,7 @@ const typeDefs = `
         bloque: String!
         salon: String!
         labor: String!
-        solucionado: String!
+        solucionado: String
     }
 `;
 
