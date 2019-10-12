@@ -26,12 +26,19 @@ export const resolvers = {
             if (input.solucionado === "" || input.solucionado === null || input.solucionado === undefined) input.solucionado = "No Aplica";
 
             if (validate.validateFormSoporte(input) === undefined) {
-                const resEmail = await email.sendEmail();
+                
+                const dataEmail = {
+                    dataIncidente: null,
+                    dataSoporte: input
+                }
+
+                const resEmail = await email.sendEmail(dataEmail);
                 var res = {};
+                
                 if (resEmail.status) {
                     try {
                         const soporte = new Soporte(input);
-                        await soporte.save();
+                        // await soporte.save();
                     
                         return res = {
                             state: true,

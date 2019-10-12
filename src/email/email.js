@@ -1,12 +1,13 @@
 import nodemailer from "nodemailer";
 import hbs from "nodemailer-express-handlebars";
 import data from "./dataEmail";
+import moment from "moment-timezone";
 
 module.exports = {
-    sendEmail: async () => {
+    sendEmail: async (dataForm) => {
         
         const dataTransporter = data.getDataEmail().transporter;
-        const dataEmail = data.getDataEmail().send;
+        const dataEmail = data.getDataEmail(dataForm).send;
         const transporter = nodemailer.createTransport(dataTransporter);
         transporter.use('compile', hbs({
             viewEngine: {

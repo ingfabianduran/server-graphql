@@ -139,23 +139,10 @@
           100% {opacity: 0; transform: scale(2.5);}
       }
     </style>
-    <!--[if gte mso 9]>
-    <xml>
-      <o:OfficeDocumentSettings>
-        <o:AllowPNG/>
-        <o:PixelsPerInch>96</o:PixelsPerInch>
-      </o:OfficeDocumentSettings>
-    </xml>
-    <![endif]-->
   </head>
   <body style="margin:0; padding:0; background-color: #eeeeee;" bgcolor="#eeeeee">
-    <!--[if mso]>
-    <style type="text/css">
-    body, table, td {font-family: Arial, Helvetica, sans-serif !important;}
-    </style>
-    <![endif]-->
     <!-- START EMAIL -->
-    <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#eeeeee">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#eeeeee" style="margin-top: 50px">
       <!-- START CARD 3 -->
       <tr>
         <td width="100%" valign="top" align="center" class="padding-container" style="padding-top: 0px!important; padding-bottom: 18px!important; mso-padding-alt: 0px 0px 18px 0px;">
@@ -172,41 +159,47 @@
                               <!-- START HEADER IMAGE -->
                               <tr>
                                 <td align="center" class="hund ripplelink" width="600">
-                                  <img align="center" width="600" style="border-radius: 3px 3px 0px 0px; width: 100%; max-width: 600px!important" class="hund" src="http://paulgoddarddesign.com/emails/images/material-design/material-header-3.jpg">
+                                  <img align="center" width="600" style="border-radius: 3px 3px 0px 0px; width: 100%; max-width: 600px!important; margin-bottom: 8px;" class="hund" src="https://imagenes.universia.net/gc/net/images/educacion/a/ac/acr/acreditacion-institucional-de-alta-calidad-para-la-universidad-el-bosque.jpg">
+                                </td>
+                              </tr>
+                               <tr>
+                                <td width="600" style="font-family: 'Roboto Mono', monospace; color: #212121!important; text-align: end;">
+                                  {{#if data.dataIncidente}}
+                                    <small style="margin-right: 10px;">{{data.dataIncidente.fecha}}</small>
+                                  {{else}}
+                                    <small style="margin-right: 10px;">{{data.dataSoporte.fecha}}</small>
+                                  {{/if}}
                                 </td>
                               </tr>
                               <!-- END HEADER IMAGE -->
                               <!-- START BODY COPY -->
                               <tr>
-                                <td class="td-padding" align="left" style="font-family: 'Roboto Mono', monospace; color: #212121!important; font-size: 24px; line-height: 30px; padding-top: 18px; padding-left: 18px!important; padding-right: 18px!important; padding-bottom: 0px!important; mso-line-height-rule: exactly; mso-padding-alt: 18px 18px 0px 13px;">
-                                  This is a Headline
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="td-padding" align="left" style="font-family: 'Roboto Mono', monospace; color: #212121!important; font-size: 16px; line-height: 24px; padding-top: 18px; padding-left: 18px!important; padding-right: 18px!important; padding-bottom: 0px!important; mso-line-height-rule: exactly; mso-padding-alt: 18px 18px 0px 18px;">
-                                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                                </td>
-                              </tr>
-                              <!-- END BODY COPY -->
-                              <!-- BUTTON -->
-                              <tr>
-                                <td align="left" style="padding: 18px 18px 18px 18px; mso-alt-padding: 18px 18px 18px 18px!important;">
-                                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <td class="td-padding" align="left" style="font-family: 'Roboto Mono', monospace; color: #212121!important; padding-top: 18px; padding-left: 18px!important; padding-right: 18px!important; padding-bottom: 0px!important; mso-line-height-rule: exactly; mso-padding-alt: 18px 18px 0px 13px;">
+                                  {{#if data.dataIncidente}}
+                                    <h1>Reporte de Incidente</h1>
+                                    <small>({{data.dataIncidente.tipo}})</small>
                                     <tr>
-                                      <td>
-                                        <table border="0" cellspacing="0" cellpadding="0">
-                                          <tr>
-                                            <td align="left" style="border-radius: 3px;" bgcolor="#8856FF">
-                                              <a class="button raised" href="http://paulgoddarddesign.com/email-marketing" target="_blank" style="font-size: 14px; line-height: 14px; font-weight: 500; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; border-radius: 3px; padding: 10px 25px; border: 1px solid #8856FF; display: inline-block;">BUTTON</a>
-                                            </td>
-                                          </tr>
-                                        </table>
+                                      <td class="td-padding" align="left" style="font-family: 'Roboto Mono', monospace; color: #212121!important; font-size: 16px; line-height: 24px; padding-top: 18px; padding-left: 18px!important; padding-right: 18px!important; padding-bottom: 0px!important; mso-line-height-rule: exactly; mso-padding-alt: 18px 18px 0px 18px; text-align: justify;">
+                                        <p>{{data.dataIncidente.descripcion}}</p>
+                                        <p>Gracias por su colaboración.</p>
                                       </td>
                                     </tr>
-                                  </table>
+                                  {{else}}
+                                    <h1>Soportes Academicos</h1>
+                                    <tr>
+                                      <td class="td-padding" align="left" style="font-family: 'Roboto Mono', monospace; color: #212121!important; font-size: 16px; line-height: 24px; padding-top: 18px; padding-left: 18px!important; padding-right: 18px!important; padding-bottom: 0px!important; mso-line-height-rule: exactly; mso-padding-alt: 18px 18px 0px 18px;">
+                                        <p><b>Servicio:</b> {{data.dataSoporte.servicio}}</p>
+                                        <p><b>Solicitante:</b> {{data.dataSoporte.solicitante}}</p>
+                                        <p><b>Perfil:</b> {{data.dataSoporte.perfil}}</p>
+                                        <p><b>Bloque y Salón:</b> {{data.dataSoporte.bloque}} - {{data.dataSoporte.salon}}</p>
+                                        <p><b>Labor:</b> {{data.dataSoporte.labor}}</p>
+                                        <p><b>¿Solucionado?</b> {{data.dataSoporte.solucionado}}</p>
+                                        <p><b>Atendido Por:</b> {{data.dataSoporte.tecnico}}</p>
+                                      </td>
+                                    </tr>
+                                  {{/if}}
                                 </td>
                               </tr>
-                              <!-- END BUTTON -->
                             </table>
                           </td>
                         </tr>
@@ -233,7 +226,6 @@
       </table>
       <![endif]-->
       <!-- END SPACER -->
-
       <!-- FOOTER -->
       <tr>
         <td width="100%" valign="top" align="center" class="padding-container">
@@ -245,70 +237,13 @@
                     <td align="center">
                       <table width="600" cellpadding="0" cellspacing="0" border="0" class="container">
                         <tr>
-                          <!-- SOCIAL -->
-                          <td align="center" width="300" style="padding-top: 0px!important; padding-bottom: 18px!important; mso-padding-alt: 0px 0px 18px 0px;">
-                            <table border="0" cellspacing="0" cellpadding="0">
-                              <tr>
-                                <td align="right" valign="top" class="social">
-                                  <a href="#"
-                                  target="_blank">
-                                  <img src="http://paulgoddarddesign.com/emails/images/material-design/fb-icon.png"
-                                  height="24" alt="Facebook" border="0" style="display:block; max-width: 24px">
-                                  </a>
-                                </td>
-                                <td width="20"></td>
-                                <td align="right" valign="top" class="social">
-                                  <a href="#"
-                                  target="_blank">
-                                  <img src="http://paulgoddarddesign.com/emails/images/material-design/twitter-icon.png"
-                                  height="24" alt="Twitter" border="0" style="display:block; max-width: 24px">
-                                  </a>
-                                </td>
-                                <td width="20"></td>
-                                <td align="right" valign="top" class="social">
-                                  <a href="#"
-                                  target="_blank">
-                                  <img src="http://paulgoddarddesign.com/emails/images/material-design/linkedin-icon.png"
-                                  height="24" alt="Linkedin" border="0" style="display:block; max-width: 24px">
-                                  </a>
-                                </td>
-                                <td width="20"></td>
-                                <td align="right" valign="top" class="social">
-                                  <a href="#"
-                                  target="_blank">
-                                  <img src="http://paulgoddarddesign.com/emails/images/material-design/instagram-icon.png"
-                                  height="24" alt="Instagram" border="0" style="display:block; max-width: 24px">
-                                  </a>
-                                </td>
-                                <td width="20"></td>
-                                <td align="right" valign="top" class="social">
-                                  <a href="#"
-                                  target="_blank">
-                                  <img src="http://paulgoddarddesign.com/emails/images/material-design/youtube-icon.png"
-                                  height="24" alt="Youtube" border="0" style="display:block; max-width: 24px">
-                                  </a>
-                                </td>
-                                <td width="20"></td>
-                                <td align="right" valign="top" class="social">
-                                  <a href="#"
-                                  target="_blank">
-                                  <img src="http://paulgoddarddesign.com/emails/images/material-design/github-icon.png"
-                                  height="24" alt="Github" border="0" style="display:block; max-width: 24px">
-                                  </a>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                          <!-- END SOCIAL -->
-                        </tr>
-                        <tr>
                           <td class="td-padding" align="center" style="font-family: 'Roboto Mono', monospace; color: #212121!important; font-size: 16px; line-height: 24px; padding-top: 0px; padding-left: 0px!important; padding-right: 0px!important; padding-bottom: 0px!important; mso-line-height-rule: exactly; mso-padding-alt: 0px 0px 0px 0px;">
-                            &copy; 2018 Footer Text
+                            &copy; Dirección de Tecnología
                           </td>
                         </tr>
                         <tr>
                           <td align="center" bgcolor="#eeeeee">
-                            <a href="*|UNSUB|*" target="_blank" style="font-size: 12px; line-height: 14px; font-weight: 500; font-family: 'Roboto Mono', monospace; color: #212121; text-decoration: underline;padding: 0px; border: 1px solid #eeeeee; display: inline-block;">Unsubscribe</a>
+                            <a href="https://www.unbosque.edu.co/" target="_blank" style="font-size: 12px; line-height: 14px; font-weight: 500; font-family: 'Roboto Mono', monospace; color: #212121; text-decoration: underline;padding: 0px; border: 1px solid #eeeeee; display: inline-block;">Universidad El Bosque</a>
                           </td>
                         </tr>
                       </table>
@@ -321,7 +256,6 @@
         </td>
       </tr>
       <!-- FOOTER -->
-
       <!-- SPACER -->
       <!--[if gte mso 9]>
       <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">

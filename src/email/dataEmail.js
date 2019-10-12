@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 module.exports = {
-    getDataEmail: () => {
+    getDataEmail: (dataForm) => {
         const dataEmail = {
             transporter: {
                 host: process.env.SERVER_MAIL,
@@ -18,7 +18,7 @@ module.exports = {
                 subject: "Nuevo Caso",
                 template: "main",
                 context: {
-                    title: "Hola Mundo"
+                    data: dataForm
                 }
             }
         }
