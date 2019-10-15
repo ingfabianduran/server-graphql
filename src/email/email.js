@@ -4,10 +4,10 @@ import data from "./dataEmail";
 import moment from "moment-timezone";
 
 module.exports = {
-    sendEmail: async (dataForm) => {
-        
-        const dataTransporter = data.getDataEmail().transporter;
-        const dataEmail = data.getDataEmail(dataForm).send;
+    // Send email with config data email and content data: 
+    sendEmail: async (dataForm, dest) => {
+        const dataTransporter = data.getDataEmail(null, null).transporter;
+        const dataEmail = data.getDataEmail(dataForm, dest).send;
         const transporter = nodemailer.createTransport(dataTransporter);
         transporter.use('compile', hbs({
             viewEngine: {

@@ -2,6 +2,7 @@ import Joi from "@hapi/joi";
 import data from "../data/data";
 
 module.exports = {
+    // Data validate inputs:
     validateFormSoporte: (dataForm) => {
         const schema = Joi.object({
             servicio: Joi.string().valid(...data.dataForm().servicios).required(),
@@ -13,6 +14,16 @@ module.exports = {
             labor: Joi.string().valid(...data.getLabores(dataForm.servicio).labores).required(),
             solucionado: Joi.string().valid("Si", "No", "No Aplica").required(),
             fecha: Joi.date().required()
+        });
+
+        const {error} = schema.validate(dataForm);
+        return error;
+    },
+
+    validateEmailInci: (dataForm) => {
+        const schema = Joi.object({
+            type: Joi.string().valid("Audiovisuales", "Mantenimiento", "Desarrollo Fisico", "Redes").required(),
+            desc: Joi.string().required()
         });
 
         const {error} = schema.validate(dataForm);

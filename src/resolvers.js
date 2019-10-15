@@ -3,9 +3,11 @@ import moment from "moment-timezone";
 import Soporte from "./models/Soporte";
 import validate from "./validations/soporte";
 import email from "./email/email";
+import destEmail from "./email/dataEmail";
 
 export const resolvers = {
     Query: {
+        // Get data by main form: 
         hello: (root, {name}) => {
             return `Hola mundo ${name}`;
         },
@@ -20,6 +22,7 @@ export const resolvers = {
         }
     },
     Mutation: {
+        // Send email for mesa de ayuda: 
         createSoporte: async (_, {input}) => {
             input.fecha = moment().tz("America/Bogota").format("YYYY/MM/DD");
             
@@ -32,13 +35,13 @@ export const resolvers = {
                     dataSoporte: input
                 }
 
-                const resEmail = await email.sendEmail(dataEmail);
+                const resEmail = await email.sendEmail(dataEmail, destEmail.getDestEmail(dataEmail.dataSoporte.servicio));
                 var res = {};
                 
                 if (resEmail.status) {
                     try {
                         const soporte = new Soporte(input);
-                        // await soporte.save();
+                        await soporte.save();
                     
                         return res = {
                             state: true,
@@ -63,6 +66,37 @@ export const resolvers = {
                     state: false,
                     message: "Algo raro paso aquí"
                 };
+            }
+        },
+        // Send email for audiovisules, redes or desarrollo fisico: 
+        sendEmailAdd: async(_, {input}) => {
+            if (validate.validateEmailInci(input) === undefined) {
+                var res = {};
+                var dest = null;
+
+                const dataEmail = {
+                    dataIncidente: input,
+                    dataSoporte: null
+                }
+
+                const resEmail = await email.sendEmail(dataEmail, destEmail.getDestEmail(dataEmail.dataIncidente.type));   
+                
+                if (resEmail.status){
+                    return res = {
+                        state: true,
+                        message: "Correo enviado correctamente"
+                    }
+                } else {
+                    return res = {
+                        state: false,
+                        message: resEmail.message
+                    }
+                }
+            } else {
+                return res = {
+                    state: false,
+                    message: "Algo raro paso aquí"
+                }
             }
         }
     }

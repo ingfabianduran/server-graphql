@@ -1,7 +1,8 @@
 require('dotenv').config();
 
 module.exports = {
-    getDataEmail: (dataForm) => {
+    // Get data config and data template: 
+    getDataEmail: (dataForm, dest) => {
         const dataEmail = {
             transporter: {
                 host: process.env.SERVER_MAIL,
@@ -14,7 +15,7 @@ module.exports = {
             },
             send: {
                 from: process.env.EMAIL,
-                to: process.env.IT,
+                to: dest,
                 subject: "Nuevo Caso",
                 template: "main",
                 context: {
@@ -24,5 +25,23 @@ module.exports = {
         }
 
         return dataEmail;
+    },
+    // Get email dest depend type: 
+    getDestEmail: (type) => {
+        var dest = null
+
+        switch (type) {
+            case "Soporte": case "Mantenimiento": case "Redes":  
+                dest = process.env.IT;
+                break;
+            case "Audiovisuales": 
+                dest = process.env.AUDIOVISUALES;
+                break;
+            case "Desarrollo Fisico": 
+                dest = process.env.ASISTENTE;
+                break;
+        }
+
+        return dest;
     }
 }

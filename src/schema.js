@@ -1,6 +1,7 @@
 import {makeExecutableSchema} from "graphql-tools";
 import {resolvers} from "./resolvers";
 
+// Define Query, Mutation, model input and res model: 
 const typeDefs = `
     type Query {
         hello(name: String!): String
@@ -11,6 +12,7 @@ const typeDefs = `
 
     type Mutation {
         createSoporte(input: SoporteInput): Status
+        sendEmailAdd(input: Incidente): Status
     }
 
     type DataForm {
@@ -52,6 +54,11 @@ const typeDefs = `
         salon: String!
         labor: String!
         solucionado: String
+    }
+
+    input Incidente {
+        type: String!
+        desc: String!
     }
 `;
 
