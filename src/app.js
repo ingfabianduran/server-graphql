@@ -7,6 +7,7 @@ import graphqlHttp from 'express-graphql';
 import schema from "./schema";
 import {connect} from "./database/database";
 import cors from "cors";
+import compression from 'compression';
 
 var app = express();
 connect();
@@ -15,8 +16,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(cors());
+app.use(compression());
 
 app.use("/graphql", graphqlHttp({
     graphiql: true,

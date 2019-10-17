@@ -3,12 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon src/bin/www.js --exec babel-node",
+    "dev": "nodemon src/bin/www.js --exec babel-node",
     "build": "babel src -d dist --source-maps",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "prod": "node ./dist/bin/www",
+    "pm2": "pm2-runtime start ./ecosystem.config.js --env production"
   },
   "dependencies": {
+    "@babel/runtime": "^7.6.3",
     "@hapi/joi": "^16.1.5",
+    "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
@@ -29,6 +33,8 @@
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
     "@babel/node": "^7.6.1",
-    "@babel/preset-env": "^7.6.0"
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.0",
+    "babel-polyfill": "^6.26.0"
   }
 }

@@ -1,0 +1,35 @@
+module.exports = {
+  apps : [{
+    name: 'API',
+    script: './dist/bin/www.js',
+    args: 'one two',
+    instances: 1,
+    autorestart: true,
+    watch: false,
+    max_memory_restart: '1G',
+    env: {
+      NODE_ENV: 'development', 
+      URL_DB: 'mongodb://localhost:27017/soportes',
+      NAME_DB: 'soportes',
+      IT: 'aulasinformaticas@unbosque.edu.co',
+      AUDIOVISUALES: 'aulasinformaticas@unbosque.edu.co',
+      ASISTENTE: 'aulasinformaticas@unbosque.edu.co',
+      EMAIL: 'soporteunbosque@gmail.com',
+      PASSWORD_EMAIL: 'Unibosque2019',
+      SERVER_MAIL: 'smtp.gmail.com',
+      PORT_SMTP: '465',
+    },
+    env_production: {
+      NODE_ENV: 'production',
+      URL_DB: 'mongodb+srv://soporte:Lenovo1993@soportes19-kjgq0.mongodb.net/test?retryWrites=true&w=majority',
+      NAME_DB: 'soportes',
+      AUDIOVISUALES: 'audiovisuales@unbosque.edu.co',
+      IT: 'asistenteit@unbosque.edu.co',
+      MESA: 'mesadeservicio@unbosque.edu.co',
+      EMAIL: 'soporteunbosque@gmail.com',
+      PASSWORD_EMAIL: 'Unibosque2019',
+      SERVER_MAIL: 'smtp.gmail.com',
+      PORT_SMTP: '465',
+    }
+  }],
+};
