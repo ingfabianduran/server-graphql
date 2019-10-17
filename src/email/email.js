@@ -1,7 +1,6 @@
 import nodemailer from "nodemailer";
 import hbs from "nodemailer-express-handlebars";
 import data from "./dataEmail";
-import moment from "moment-timezone";
 
 module.exports = {
     // Send email with config data email and content data: 

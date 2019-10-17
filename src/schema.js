@@ -4,10 +4,9 @@ import {resolvers} from "./resolvers";
 // Define Query, Mutation, model input and res model: 
 const typeDefs = `
     type Query {
-        hello(name: String!): String
-        soportes: [Soporte]
         dataForm: DataForm
         labores(typeSuport: String!): Labor
+        reporte: String
     }
 
     type Mutation {
@@ -25,19 +24,6 @@ const typeDefs = `
 
     type Labor {
         labores: [String]
-    }
-    
-    type Soporte {
-        _id: ID
-        servicio: String
-        tecnico: String
-        solicitante: String
-        perfil: String
-        bloque: String
-        salon: String
-        labor: String
-        solucionado: String
-        fecha: String
     }
 
     type Status {

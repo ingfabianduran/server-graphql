@@ -7,18 +7,14 @@ import destEmail from "./email/dataEmail";
 
 export const resolvers = {
     Query: {
-        // Get data by main form: 
-        hello: (root, {name}) => {
-            return `Hola mundo ${name}`;
-        },
-        soportes: async () => {
-            return await Soporte.find();
-        },
         dataForm: () => {
             return data.dataForm();
         },
         labores: (root, {typeSuport}) => {
             return data.getLabores(typeSuport);
+        },
+        reporte: async (root, {input}) => {
+            
         }
     },
     Mutation: {
