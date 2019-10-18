@@ -4,6 +4,7 @@ import Soporte from "./models/Soporte";
 import validate from "./validations/soporte";
 import email from "./email/email";
 import destEmail from "./email/dataEmail";
+import report from "./report/soporte";
 
 export const resolvers = {
     Query: {
@@ -14,7 +15,7 @@ export const resolvers = {
             return data.getLabores(typeSuport);
         },
         reporte: async (root, {input}) => {
-            
+            return await report.soportesAndMantenimientos(input);
         }
     },
     Mutation: {

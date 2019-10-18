@@ -6,7 +6,7 @@ const typeDefs = `
     type Query {
         dataForm: DataForm
         labores(typeSuport: String!): Labor
-        reporte: String
+        reporte(input: DataSoporte): [Reporte]
     }
 
     type Mutation {
@@ -31,6 +31,11 @@ const typeDefs = `
         message: String
     }
 
+    type Reporte {
+        elemento: String
+        sumatoria: Int
+    }
+
     input SoporteInput {
         servicio: String!
         tecnico: String!
@@ -45,6 +50,12 @@ const typeDefs = `
     input Incidente {
         type: String!
         desc: String!
+    }
+
+    input DataSoporte {
+        fInicial: String!
+        fFinal: String!
+        typeSoporte: String!
     }
 `;
 

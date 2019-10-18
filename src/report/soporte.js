@@ -1,4 +1,4 @@
-import Soporte from "./models/Soporte";
+import Soporte from "../models/Soporte";
 
 module.exports = {
     soportesAndMantenimientos: async (input) => {
@@ -7,10 +7,10 @@ module.exports = {
                {
                     $match: {
                         fecha: {
-                            $gte: new Date("2019-07-22T13:35:06.983+00:00"),
-                            $lt: new Date("2019-07-23T13:35:06.983+00:00")   
+                            $gte: new Date(input.fInicial),
+                            $lt: new Date(input.fFinal)   
                         },
-                        servicio: "Soporte"
+                        servicio: input.typeSoporte
                     }
                 },
                 {
@@ -30,7 +30,7 @@ module.exports = {
                 }
             ]);
 
-
+            return soportes;
         } catch (error) {
             
         }
