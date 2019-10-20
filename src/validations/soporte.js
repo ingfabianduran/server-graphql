@@ -19,11 +19,22 @@ module.exports = {
         const {error} = schema.validate(dataForm);
         return error;
     },
-
+    // Data validate other incident: 
     validateEmailInci: (dataForm) => {
         const schema = Joi.object({
             type: Joi.string().valid("Audiovisuales", "Mantenimiento", "Desarrollo Fisico", "Redes").required(),
             desc: Joi.string().required()
+        });
+
+        const {error} = schema.validate(dataForm);
+        return error;
+    },
+    // Validate form generate report: 
+    validateConReport: (dataForm) => {
+        const schema = Joi.object({
+            fInicial: Joi.date().required(),
+            fFinal: Joi.date().required(),
+            typeSoporte: Joi.string().valid(...data.dataForm().consultas).required()
         });
 
         const {error} = schema.validate(dataForm);

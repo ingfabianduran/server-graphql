@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
+require('dotenv').config();
 
 export async function connect() {
     try {
-            await mongoose.connect("mongodb://localhost/soportes", {
+            await mongoose.connect(process.env.URL_DB, {
             useNewUrlParser: true
         });
 

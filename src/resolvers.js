@@ -14,8 +14,16 @@ export const resolvers = {
         labores: (root, {typeSuport}) => {
             return data.getLabores(typeSuport);
         },
-        reporte: async (root, {input}) => {
-            return await report.soportesAndMantenimientos(input);
+        reporte: async (root, {input}) => {            
+            if (validate.validateConReport(input) === undefined) {
+                if (input.typeSoporte === "Mantenimiento" || input.typeSoporte === "Soporte") {
+                    return await report.soportesAndMantenimientos(input);
+                } else {
+                    return await report.otherReporte(input);
+                }
+            } else {
+                return null;
+            }
         }
     },
     Mutation: {
