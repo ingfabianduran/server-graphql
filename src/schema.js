@@ -20,6 +20,7 @@ const typeDefs = `
         perfiles: [String]
         bloques: [String]
         soluciones: [String]
+        consultas: [String]
     }
 
     type Labor {
