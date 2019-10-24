@@ -32,8 +32,8 @@ module.exports = {
     // Validate form generate report: 
     validateConReport: (dataForm) => {
         const schema = Joi.object({
-            fInicial: Joi.date().required(),
-            fFinal: Joi.date().required(),
+            fInicial: Joi.date().iso().required(),
+            fFinal: Joi.date().iso().greater(Joi.ref("fInicial")).required(),
             typeSoporte: Joi.string().valid(...data.dataForm().consultas).required()
         });
 

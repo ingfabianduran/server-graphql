@@ -22,7 +22,7 @@ export const resolvers = {
                     return await report.otherReporte(input);
                 }
             } else {
-                return null;
+                return [];
             }
         }
     },
