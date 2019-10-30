@@ -7,11 +7,20 @@ const typeDefs = `
         dataForm: DataForm
         labores(typeSuport: String!): Labor
         reporte(input: DataSoporte): [Reporte]
+        login(input: DataLogin): AuthData
     }
 
     type Mutation {
         createSoporte(input: SoporteInput): Status
         sendEmailAdd(input: Incidente): Status
+    }
+
+    type AuthData {
+        status: Boolean!
+        message: String!
+        userId: ID
+        token: String
+        tokenExpiration: Int
     }
 
     type DataForm {
@@ -57,6 +66,11 @@ const typeDefs = `
         fInicial: String!
         fFinal: String!
         typeSoporte: String!
+    }
+
+    input DataLogin {
+        usuario: String!
+        password: String!
     }
 `;
 

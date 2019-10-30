@@ -8,8 +8,18 @@ import schema from "./schema";
 import {connect} from "./database/database";
 import cors from "cors";
 import compression from 'compression';
+import bodyParser from "body-parser";
+import jwt from "express-jwt";
+import dotenv from "dotenv";
 
 var app = express();
+dotenv.config();
+
+const auth = jwt({
+    secret: process.env.SECRET,
+    credentialsRequired: false
+});
+
 connect();
 
 app.use(logger('dev'));
@@ -19,11 +29,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(cors());
 app.use(compression());
+app.use(bodyParser.json());
 
-app.use("/graphql", graphqlHttp({
+
+app.use("/graphql", bodyParser.json(), auth, graphqlHttp(req => ({
     graphiql: true,
-    schema: schema
-}));
+    schema: schema,
+    context: {
+        user: req.user
+    }
+})));
 
 app.use('/', indexRouter);
 

@@ -1,20 +1,26 @@
 import data from "./data/data";
 import moment from "moment-timezone";
 import Soporte from "./models/Soporte";
+import Usuario from "./models/Usuario";
 import validate from "./validations/soporte";
 import email from "./email/email";
 import destEmail from "./email/dataEmail";
 import report from "./report/soporte";
+import bcrypt from "bcrypt";
+import jsonwebtoken from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export const resolvers = {
     Query: {
-        dataForm: () => {
+        dataForm: (root, {}, {user}) => {            
             return data.dataForm();
         },
         labores: (root, {typeSuport}) => {
             return data.getLabores(typeSuport);
         },
-        reporte: async (root, {input}) => {            
+        reporte: async (root, {input}, {user}) => {
             if (validate.validateConReport(input) === undefined) {
                 if (input.typeSoporte === "Mantenimiento" || input.typeSoporte === "Soporte") {
                     return await report.soportesAndMantenimientos(input);
@@ -23,6 +29,45 @@ export const resolvers = {
                 }
             } else {
                 return [];
+            }
+        },
+        login: async (root, {input}) => {
+            const usuario = await Usuario.findOne({"usuario": input.usuario});
+            
+            if (!usuario) {
+                return {
+                    status: false,
+                    message: "Usuario No Encontrado",
+                    userId: null,
+                    token: null,
+                    tokenExpiration: null
+                }
+            }
+
+            const isValid = await bcrypt.compare(input.password, usuario.password);
+
+            if (!isValid) {
+                return {
+                    status: false,
+                    message: "Contraseña Incorrecta",
+                    userId: null,
+                    token: null,
+                    tokenExpiration: null
+                }
+            }
+            
+            const token = jsonwebtoken.sign({
+                id: usuario._id
+            }, process.env.SECRET, {
+                expiresIn: "1d"
+            });
+
+            return {
+                status: true,
+                message: "Bienvenido al Sistema",
+                userId: usuario.id,
+                token: token,
+                tokenExpiration: 1
             }
         }
     },
@@ -103,6 +148,6 @@ export const resolvers = {
                     message: "Algo raro paso aquí"
                 }
             }
-        }
+        },
     }
 };   
