@@ -18,6 +18,7 @@ const typeDefs = `
     type AuthData {
         status: Boolean!
         message: String!
+        resLogin: String!
         userId: ID
         token: String
         tokenExpiration: Int

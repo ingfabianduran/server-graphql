@@ -7,7 +7,7 @@ module.exports = {
             perfiles: ["Administrativo", "Docente", "Estudiante"],
             bloques: ["Bloque A", "Bloque B", "Bloque C", "Bloque E", "Bloque F", "Bloque G", "Bloque I", "Bloque J", "Bloque K", "Bloque L", "Bloque M", "Bloque N", "Bloque O", "Edificio HUB", "Centro de Lenguas", "Casa Fotografia"],
             soluciones: ["Si", "No"],
-            consultas: ["Soporte", "Mantenimiento", "servicio", "tecnico", "bloque"]  
+            consultas: ["Soporte", "Mantenimiento", "Servicio", "Tecnico", "Bloque"]  
         };
         
         return data;

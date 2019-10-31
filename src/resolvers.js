@@ -38,6 +38,7 @@ export const resolvers = {
                 return {
                     status: false,
                     message: "Usuario No Encontrado",
+                    resLogin: "error",
                     userId: null,
                     token: null,
                     tokenExpiration: null
@@ -50,6 +51,7 @@ export const resolvers = {
                 return {
                     status: false,
                     message: "Contraseña Incorrecta",
+                    resLogin: "error",
                     userId: null,
                     token: null,
                     tokenExpiration: null
@@ -65,6 +67,7 @@ export const resolvers = {
             return {
                 status: true,
                 message: "Bienvenido al Sistema",
+                resLogin: "success",
                 userId: usuario.id,
                 token: token,
                 tokenExpiration: 1

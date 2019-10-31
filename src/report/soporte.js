@@ -48,7 +48,7 @@ module.exports = {
                 },
                 {
                     $group: {
-                        _id: "$" + input.typeSoporte,
+                        _id: "$" + input.typeSoporte.toLowerCase(),
                         suma: {
                             $sum: 1
                         }
