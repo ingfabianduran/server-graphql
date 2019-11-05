@@ -21,14 +21,18 @@ export const resolvers = {
             return data.getLabores(typeSuport);
         },
         reporte: async (root, {input}, {user}) => {
-            if (validate.validateConReport(input) === undefined) {
-                if (input.typeSoporte === "Mantenimiento" || input.typeSoporte === "Soporte") {
-                    return await report.soportesAndMantenimientos(input);
-                } else {
-                    return await report.otherReporte(input);
-                }
+            if (!user) {
+                throw new Error("Usuario no autenticado");
             } else {
-                return [];
+                if (validate.validateConReport(input) === undefined) {
+                    if (input.typeSoporte === "Mantenimiento" || input.typeSoporte === "Soporte") {
+                        return await report.soportesAndMantenimientos(input);
+                    } else {
+                        return await report.otherReporte(input);
+                    }
+                } else {
+                    return [];
+                }
             }
         },
         login: async (root, {input}) => {
@@ -59,7 +63,7 @@ export const resolvers = {
             }
             
             const token = jsonwebtoken.sign({
-                id: usuario._id
+                id: usuario.id
             }, process.env.SECRET, {
                 expiresIn: "1d"
             });
@@ -76,9 +80,10 @@ export const resolvers = {
     },
     Mutation: {
         // Send email for mesa de ayuda: 
-        createSoporte: async (_, {input}) => {
-            input.fecha = moment().tz("America/Bogota").format("YYYY/MM/DD");
+        createSoporte: async (_, {input}, {user}) => {
             
+            input.fecha = moment().tz("America/Bogota").format("YYYY/MM/DD");
+                
             if (input.solucionado === "" || input.solucionado === null || input.solucionado === undefined) input.solucionado = "No Aplica";
 
             if (validate.validateFormSoporte(input) === undefined) {
@@ -120,7 +125,8 @@ export const resolvers = {
                     message: "Algo raro paso aquí"
                 };
             }
-        },
+        }, 
+        
         // Send email for audiovisules, redes or desarrollo fisico: 
         sendEmailAdd: async(_, {input}) => {
             if (validate.validateEmailInci(input) === undefined) {
