@@ -14,8 +14,11 @@ dotenv.config();
 
 export const resolvers = {
     Query: {
-        dataForm: (root, {}, {user}) => {            
+        dataForm: (root, {}) => {            
             return data.dataForm();
+        },
+        dataFormReport: (root, {}) => {            
+            return data.dataFormReport();
         },
         labores: (root, {typeSuport}) => {
             return data.getLabores(typeSuport);

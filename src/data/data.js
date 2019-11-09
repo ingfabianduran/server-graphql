@@ -12,6 +12,14 @@ module.exports = {
         
         return data;
     },
+    // Get data in the main form:
+    dataFormReport: () => {
+        const data = {
+            consultas: ["Soporte", "Mantenimiento", "Servicio", "Tecnico", "Bloque"]
+        }
+
+        return data;
+    },
     // Validate typeSuport and get labores: 
     getLabores: (typeSuport) => {
         var data = {};

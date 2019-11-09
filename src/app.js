@@ -11,6 +11,7 @@ import compression from 'compression';
 import bodyParser from "body-parser";
 import jwt from "express-jwt";
 import dotenv from "dotenv";
+import token from "./token";
 
 var app = express();
 dotenv.config();
@@ -31,14 +32,18 @@ app.use(cors());
 app.use(compression());
 app.use(bodyParser.json());
 
+app.use(token.checkHeaders);
 
-app.use("/graphql", bodyParser.json(), auth, graphqlHttp(req => ({
-    graphiql: true,
-    schema: schema,
-    context: {
-        user: req.user
+app.use("/graphql", bodyParser.json(), auth, graphqlHttp((req) => {
+   
+    return {
+        graphiql: true,
+        schema: schema,
+        context: {
+            user: req.user
+        }
     }
-})));
+}));
 
 app.use('/', indexRouter);
 

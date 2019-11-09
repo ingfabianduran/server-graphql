@@ -5,6 +5,7 @@ import {resolvers} from "./resolvers";
 const typeDefs = `
     type Query {
         dataForm: DataForm
+        dataFormReport: DataFormReport
         labores(typeSuport: String!): Labor
         reporte(input: DataSoporte): [Reporte]
         login(input: DataLogin): AuthData
@@ -30,6 +31,10 @@ const typeDefs = `
         perfiles: [String]
         bloques: [String]
         soluciones: [String]
+        consultas: [String]
+    }
+
+    type DataFormReport {
         consultas: [String]
     }
 
