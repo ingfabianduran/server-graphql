@@ -1,3 +1,4 @@
+import data from "../data/data";
 import report from "../report/soporte";
 
 export default {
