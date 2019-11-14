@@ -1,5 +1,6 @@
 import data from "../data/data";
 import report from "../report/soporte";
+import validate from "../validations/soporte";
 
 export default {
     Query: {
