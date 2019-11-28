@@ -11,12 +11,12 @@ module.exports = {
         transporter.use('compile', hbs({
             viewEngine: {
                 extname: '.handlebars',
-                layoutsDir: `${__dirname}/views`,
+                layoutsDir: `${__dirname}`,
                 defaultLayout: 'main',
-                partialsDir: `${__dirname}/views/partials`,
+                partialsDir: `${__dirname}/partials`,
                 
             },
-            viewPath: `${__dirname}/views/`,
+            viewPath: `${__dirname}`,
         }))
         var resEmail = {};
 
