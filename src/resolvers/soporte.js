@@ -18,7 +18,6 @@ export default {
     Mutation: {
         // Send email for mesa de ayuda: 
         createSoporte: async (_, {input}, {user}) => {
-            
             input.fecha = moment().tz("America/Bogota").format("YYYY/MM/DD");
                 
             if (input.solucionado === "" || input.solucionado === null || input.solucionado === undefined) input.solucionado = "No Aplica";
