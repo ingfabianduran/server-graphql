@@ -58,7 +58,7 @@ export default {
             } else {
                 return res = {
                     state: false,
-                    message: "Algo raro paso aquí"
+                    message: "Datos invalidos"
                 };
             }
         }, 
@@ -89,7 +89,7 @@ export default {
             } else {
                 return res = {
                     state: false,
-                    message: "Algo raro paso aquí"
+                    message: "Datos invalidos"
                 }
             }
         },
