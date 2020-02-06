@@ -16,7 +16,7 @@ module.exports = {
             send: {
                 from: process.env.EMAIL,
                 to: dest,
-                subject: "Nuevo Caso",
+                subject: 'Soporte Academico',
                 template: "main",
                 context: {
                     data: dataForm
