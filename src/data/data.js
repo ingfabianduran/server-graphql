@@ -3,7 +3,7 @@ module.exports = {
     dataForm: () => {
         const data = {
             servicios: ["Soporte", "Mantenimiento", "Audiovisuales", "Desarrollo Fisico", "Redes"],
-            tecnicos: ["John Jairo Agudelo", "Julian Camilo Lopez", "Orlando Garcia Zapata", "Ivan Arturo Ortiz", "Sebastian Torres", "Nelson Enrique Alvarez"],
+            tecnicos: ["David Stiven Martinez", "Fabian Esteban Duran", "Maripaz Carrillo", "Norberto Borja", "John Jairo Agudelo", "Julian Camilo Lopez", "Orlando Garcia Zapata", "Ivan Arturo Ortiz", "Sebastian Torres", "Nelson Enrique Alvarez", "Jordy Stiven Rodriguez"],
             perfiles: ["Administrativo", "Docente", "Estudiante"],
             bloques: ["Bloque A", "Bloque B", "Bloque C", "Bloque E", "Bloque F", "Bloque G", "Bloque I", "Bloque J", "Bloque K", "Bloque L", "Bloque M", "Bloque N", "Bloque O", "Edificio HUB", "Centro de Lenguas", "Casa Fotografia"],
             soluciones: ["Si", "No"],
