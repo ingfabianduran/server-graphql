@@ -7,7 +7,8 @@ module.exports = {
             perfiles: ["Administrativo", "Docente", "Estudiante"],
             bloques: ["Bloque A", "Bloque B", "Bloque C", "Bloque E", "Bloque F", "Bloque G", "Bloque I", "Bloque J", "Bloque K", "Bloque L", "Bloque M", "Bloque N", "Bloque O", "Edificio HUB", "Centro de Lenguas", "Casa Fotografia"],
             soluciones: ["Si", "No"],
-            consultas: ["Soporte", "Mantenimiento", "Servicio", "Tecnico", "Bloque"]  
+            consultas: ["Soporte", "Mantenimiento", "Servicio", "Tecnico", "Bloque"],
+            cambios: ["Cambio de Cables (poder o video)", "Cambio de Mouse", "Cambio de Teclado", "Cambio de Monitor", "Cambio de Torre"]
         };
         
         return data;
@@ -34,7 +35,8 @@ module.exports = {
                     "Encender Equipo de Cómputo",
                     "Encender Videoproyector - TV",
                     "Reiniciar Sistema", 
-                    "Revisión o Cambio de Periféricos", 
+                    "Revisión o Cambio de Periféricos",
+                    "Revision o Cambio de perifericos (Vandalismo)",  
                     "Soporte No Necesario", 
                     "Usuario o Clave de Ingreso", 
                     "Verificar Conectividad a Internet"];

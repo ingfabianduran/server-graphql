@@ -2,6 +2,7 @@ export default `
     type Query {
         dataForm: DataForm
         labores(typeSuport: String!): Labor
+        cambios: Cambio
     }
 
     type Mutation {
@@ -16,10 +17,15 @@ export default `
         bloques: [String]
         soluciones: [String]
         consultas: [String]
+        cambios: [String]
     }
 
     type Labor {
         labores: [String]
+    }
+
+    type Cambio {
+        cambios: [String]
     }
 
     type Status {
@@ -35,6 +41,7 @@ export default `
         bloque: String!
         salon: String!
         labor: String!
+        cambio: String
         solucionado: String
     }
 
