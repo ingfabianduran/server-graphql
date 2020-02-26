@@ -14,6 +14,9 @@ export default {
         labores: (root, {typeSuport}) => {
             return data.getLabores(typeSuport);
         },
+        cambios: (root, {}) => {
+            return data.getCambios();
+        }
     },
     Mutation: {
         // Send email for mesa de ayuda: 

@@ -29,6 +29,10 @@ const Soporte = new Schema({
         type: String,
         required: true
     },
+    cambio: {
+        type: String,
+        required: false
+    },
     solucionado: {
         type: String,
         required: true
@@ -37,6 +41,6 @@ const Soporte = new Schema({
         type: Date,
         required: true
     }
-});
+}, { strict: false });
 
 export default model("Soporte", Soporte);

@@ -193,6 +193,11 @@
                                         <p><b>Perfil:</b> {{data.dataSoporte.perfil}}</p>
                                         <p><b>Bloque y Salón:</b> {{data.dataSoporte.bloque}} - {{data.dataSoporte.salon}}</p>
                                         <p><b>Labor:</b> {{data.dataSoporte.labor}}</p>
+                                        {{#if data.dataSoporte.cambio}}
+                                          <p>
+                                            <b>Cambio Hardware:</b> {{data.dataSoporte.cambio}}
+                                          </p>
+                                        {{/if}}
                                         <p><b>¿Solucionado?</b> {{data.dataSoporte.solucionado}}</p>
                                         <p><b>Atendido Por:</b> {{data.dataSoporte.tecnico}}</p>
                                       </td>
