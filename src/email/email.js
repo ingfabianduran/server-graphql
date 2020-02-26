@@ -7,7 +7,7 @@ module.exports = {
     sendEmail: async (dataForm, dest) => {
         const dataTransporter = data.getDataEmail(null, null).transporter;
         const dataEmail = data.getDataEmail(dataForm, dest).send;
-        dataEmail.subject = dataForm.dataSoporte.labor;
+        // dataEmail.subject = dataForm.dataSoporte.labor;
         const transporter = nodemailer.createTransport(dataTransporter);
         transporter.use('compile', hbs({
             viewEngine: {
