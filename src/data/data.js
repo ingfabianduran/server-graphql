@@ -8,7 +8,7 @@ module.exports = {
             bloques: ["Bloque A", "Bloque B", "Bloque C", "Bloque E", "Bloque F", "Bloque G", "Bloque I", "Bloque J", "Bloque K", "Bloque L", "Bloque M", "Bloque N", "Bloque O", "Edificio HUB", "Centro de Lenguas", "Casa Fotografia"],
             soluciones: ["Si", "No"],
             consultas: ["Soporte", "Mantenimiento", "Servicio", "Tecnico", "Bloque"],
-            cambios: ["Cambio de Cables (poder o video)", "Cambio de Mouse", "Cambio de Teclado", "Cambio de Monitor", "Cambio de Torre"]
+            cambios: ["VGA", "HDMI", "Red", "Poder", "Teclado", "Mouse", "Monitor", "CPU"]
         };
         
         return data;
@@ -29,16 +29,17 @@ module.exports = {
         {
             case "Soporte":
                 data.labores = ["Asignación Provisional de portatil", 
-                    "Configuración Vídeo Beam - TV", 
+                    "Configuración Vídeo Beam - TV",
+                    "Configuración de Sonido",
                     "Daño en Tomas de Conectividad", 
                     "Duplicado de Pantallas", 
                     "Encender Equipo de Cómputo",
                     "Encender Videoproyector - TV",
                     "Reiniciar Sistema", 
-                    "Revisión o Cambio de Periféricos",
-                    "Revision o Cambio de perifericos (Vandalismo)",  
+                    "Revisión o Cambio de Periféricos",  
                     "Soporte No Necesario", 
-                    "Usuario o Clave de Ingreso", 
+                    "Usuario o Clave de Ingreso",
+                    "Vandalismo", 
                     "Verificar Conectividad a Internet"];
                 break;
             case "Mantenimiento":
