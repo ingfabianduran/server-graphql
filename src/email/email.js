@@ -32,6 +32,7 @@ module.exports = {
         } 
         catch (error) 
         {
+            console.log(error);
             return resEmail = {
                 status: false,
                 message: `Error: ${error}`

@@ -3,9 +3,9 @@ module.exports = {
     dataForm: () => {
         const data = {
             servicios: ["Soporte", "Mantenimiento", "Audiovisuales", "Desarrollo Fisico", "Redes"],
-            tecnicos: ["David Stiven Martinez", "Fabian Esteban Duran", "Maripaz Carrillo", "Norberto Borja", "John Jairo Agudelo", "Julian Camilo Lopez", "Orlando Garcia Zapata", "Ivan Arturo Ortiz", "Sebastian Torres", "Nelson Enrique Alvarez", "Jordy Stiven Rodriguez"],
+            tecnicos: ["David Stiven Martinez", "Fabian Esteban Duran", "Maripaz Carrillo", "Norberto Borja", "John Jairo Agudelo", "Nancy Johanna Ochoa"],
             perfiles: ["Administrativo", "Docente", "Estudiante"],
-            bloques: ["Bloque A", "Bloque B", "Bloque C", "Bloque E", "Bloque F", "Bloque G", "Bloque I", "Bloque J", "Bloque K", "Bloque L", "Bloque M", "Bloque N", "Bloque O", "Edificio HUB", "Centro de Lenguas", "Casa Fotografia"],
+            bloques: ["Bloque A", "Bloque B", "Bloque C", "Bloque E", "Bloque F", "Bloque G", "Bloque I", "Bloque J", "Bloque K", "Bloque L", "Bloque M", "Bloque N", "Bloque O", "Edificio HUB", "Edificio HUB 2", "Centro de Lenguas", "Casa Fotografia"],
             soluciones: ["Si", "No"],
             consultas: ["Soporte", "Mantenimiento", "Servicio", "Tecnico", "Bloque"],
             cambios: ["VGA", "HDMI", "Red", "Poder", "Teclado", "Mouse", "Monitor", "CPU"]
@@ -40,7 +40,8 @@ module.exports = {
                     "Soporte No Necesario", 
                     "Usuario o Clave de Ingreso",
                     "Vandalismo", 
-                    "Verificar Conectividad a Internet"];
+                    "Verificar Conectividad a Internet",
+                    "Revision diadema o camara"];
                 break;
             case "Mantenimiento":
                 data.labores = ["Adecuación Mesa de Docentes", 
